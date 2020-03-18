@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
+    "start": "npx nodemon -r esm app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,12 +14,24 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-flash-messages": "^0.1.1",
     "express-generator": "^4.16.1",
+    "express-session": "^1.17.0",
     "morgan": "^1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
+    "randomstring": "^1.1.5",
+    "sendmail": "^1.6.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "social network site",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lnzimand/matchaII.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lnzimand/matchaII/issues"
+  },
+  "homepage": "https://github.com/lnzimand/matchaII#readme"
 }

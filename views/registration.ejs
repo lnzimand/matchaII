@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <% include partials/head %>
-    </head>
-    <body class="req">
-        <% include partials/menu %>
-        <div>
-            <div>
-                <form action="/action_page.js">
-                    <h1>SIGN UP</h1>
-                    <div class="icon">
-                      <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="formcontainer">
-                    <div class="container">
-                      <label for="uname"><strong>Username</strong></label><br>
-                      <input type="text" placeholder="Enter Username" name="username"><br>
-                      <label for="mail"><strong>E-mail</strong></label><br>
-                      <input type="email" placeholder="Enter E-mail" name="mail"><br>
-                      <label for="psw"><strong>Password</strong></label><br>
-                      <input type="password" placeholder="Enter Password" name="password" required>
-                    </div>
-                    <button type="submit"><strong>SIGN UP</strong></button>
-                    <div class="container" style="background-color: #eee">
-                      <span class="psw"><a href="#">Forgot password?</a></span>
-                    </div>
-                  </form>
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="req">
+    <% include partials/menu %>
+    <div>
+      <div>
+        <form action="/registration" name="myForm" method="POST">
+          <h1>Register</h1>
+          <div class="icon">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="formcontainer">
+            <div class="container">
+              <label for="firstname"><strong>First Name</strong></label><br>
+              <input type="text" placeholder="Enter your First Name" name="user[firstname]"><br>
+              <label for="lastname"><strong>Surname</strong></label><br>
+              <input type="text" placeholder="Enter your First Name" name="user[lastname]"><br>
+              <label for="uname"><strong>Username</strong></label><br>
+              <input type="text" placeholder="Enter Username" name="user[username]"><br>
+              <label for="mail"><strong>E-mail</strong></label><br>
+              <input type="email" placeholder="Enter E-mail" name="user[mail]"><br>
+              <label for="psw"><strong>Password</strong></label><br>
+              <input type="password" placeholder="Enter Password" name="user[password]"><br>
+              <label for="psw"><strong>Confirm Password</strong></label><br>
+              <input type="password" placeholder="Enter Password" name="user[confirmPassword]">
             </div>
-        </div>
-    </body>
-    <% include partials/script %>
+            <button type="submit"><strong>REGISTER</strong></button>
+            <div class="container" style="background-color: #eee">
+              <span class="psw"><a href="/reset_password">Forgot password?</a></span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <% include partials/script %>
 </html>
