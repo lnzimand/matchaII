@@ -1,83 +1,73 @@
-.bg-3 {
-    background-color: #ffffff;
-    color: #555555;
-}
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 15px;
-}
-
-.navbar {
-    padding-top: 0px;
-    padding-bottom: 5px;
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 12px;
-    letter-spacing: 5px;
-}
-
-.navbar-nav li a:hover {
-    color: #1abc9c !important;
-}
-
-.active>a {
-    color: #1abc9c !important;
-}
-
-.req body {
-    display: flex;
-    justify-content: center;
+body {
+    background-color: #f0f3f5;
     font-family: Roboto, Arial, sans-serif;
-    font-size: 15px;
-    }
-.req form {
-    border: 5px solid #f1f1f1;
 }
-.req input[type=text], input[type=password], input[type=email] {
-    width: 50%;
-    padding: 8px 4px;
-    margin: 2px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+
+.box {
+	background-color: #fff;
+	padding: 25px 40px;
+	margin-top: 30px; /*Remove, its example*/
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.input-group {
+	margin: 5px 0px;
+}
+
+.btn-primary {
+	border-radius: 2px;
+	background-color: #23a9f6;
+	border-color: #23a9f6;
+	margin: 10px 0px;
+}
+
+p {
+	color: #aebbcb;
+} 
+
+a {
+	color: #23a9f6;
+}
+
+.divider-form {
+    border: 1px solid #EBEFF1;
+    margin: 15px -40px 10px;
+}
+
+label {
+	text-transform: uppercase;
+	color: #bdc7d4;
+}
+
+strong {
+	color: #95a5bb;
+}
+
+.form-control {
+    background: none;
+    height: 40px;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #8b9eb6;
+    padding: 0px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
 .icon {
-    font-size: 75px;
+    margin: 0;
+    font-size: 50px;
     display: flex;
     justify-content: center;
-    color: #4286f4;
+    color: #808080;
 }
-button {
-    background-color: #4286f4;
-    color: white;
-    padding: 14px 0;
-    margin: 10px 0;
-    border: none;
-    cursor: grab;
-    width: 48%;
-}
-h1 {
-    text-align:center;
-    font-size:18;
-}
-button:hover {
-    opacity: 0.8;
-}
-.formcontainer {
-    text-align: center !important;
-    margin: 12px 26px 6px;
-}
-.container {
-    padding: 1px 0;
-    text-align: center !important;
-}
-span.psw {
-    float: right;
-    padding-top: 0;
-    padding-right: 15px;
-}
+
 /* Change styles for span on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {

@@ -7,7 +7,7 @@ class dbUserActions {
         this.query = query
     }
 
-    find(queryString, params) {
+    inquiry(queryString, params) {
         return new Promise ((resolve, reject) =>
         this.connection.getConnection((objError, objConnection) => {
             if (objError) {
@@ -24,23 +24,11 @@ class dbUserActions {
         }))
     }
 
-    insert(queryString, params) {
-        return new Promise ((resolve, reject) => {
-            this.connection.getConnection((objError, objConnection) => {
-                if (objError) {
-                    objConnection.release()
-                    reject(objError)
-                } else {
-                    query(objConnection, queryString, params).then(result => {
-                        objConnection.release()
-                        resolve(result)
-                    }).catch(error => {
-                        objConnection.release()
-                        reject(error)
-                    })
-                }
-            })
-        })
+    User = {
+        findEmail: (email) => {
+            const queryString = 'SELECT * FROM \`Users\` WHERE \`email\`=?'
+            return this.inquiry(queryString, email)
+        }
     }
 }
 

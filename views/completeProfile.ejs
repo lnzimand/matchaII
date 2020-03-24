@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body>
+    <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="box">
+        <form action="/enrich_profile" name="myForm" method="POST">
+          <h2>Complete Registration</h2>
+          <div class="divider-form"></div>
+          <div class="form-group">
+            <label for="sexualPreference">Sexual Preference</label>
+                <select name="sexualPreference" id="sexualPreference">
+                    <option value="male">Males</option>
+                    <option value="female">Females</option>
+                    <option value="both">Both Males and Females</option>
+                </select>
+          </div>
+          <div class="form-group">
+            <h4>Gender</h4>
+            <input type="radio" name="gender" id="male" value="male">
+              <label for="male">Male</label>
+              <input type="radio" name="gender" id="female" value="female">
+              <label for="female">Female</label>
+              <input type="radio" name="gender" id="other" value="other">
+              <label for="other">Other</label>
+          </div>
+          <div class="form-group">
+            <h4>Interests</h4>
+            <input type="checkbox" name="interests" value="sports">
+            <label for="vehicle1"> Sports</label><br>
+            <input type="checkbox" name="interests" value="blogging">
+            <label for="vehicle2"> Blogging</label><br>
+            <input type="checkbox" name="interests" value="volunteering">
+            <label for="vehicle3"> Volunteering</label><br>
+            <input type="checkbox" name="interests" value="Bike">
+            <label for="vehicle1"> Traveling</label><br>
+            <input type="checkbox" name="interests" value="Car">
+            <label for="vehicle2"> Art & Design</label><br>
+            <input type="checkbox" name="interests" value="Boat">
+            <label for="vehicle3"> Music</label><br>
+            <input type="checkbox" name="interests" value="Bike">
+            <label for="vehicle1"> Reading</label><br>
+            <input type="checkbox" name="interests" value="Car">
+            <label for="vehicle2"> Video Gaming</label><br>
+            <input type="checkbox" name="interests" value="Boat">
+            <label for="vehicle3"> Strategic Gaming</label><br>
+            <input type="checkbox" name="interests" value="Car">
+            <label for="vehicle2"> Yoga</label><br>
+        </div>
+          <div class="divider-form"></div>
+          <button type="submit" class="btn-block btn btn-lg btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+  <!-- <body class="req">
+    <div>
+      <div>
+        <form action="/registration" name="myForm" method="POST">
+          <div class="icon">
+            <i class="fa fa-edit"></i>
+          </div>
+          <div class="formcontainer">
+            <div class="container">
+              <input type="radio" name="gender" id="male" value="male">
+              <label for="male">Male</label>
+              <input type="radio" name="gender" id="female" value="female">
+              <label for="female">Female</label>
+              <input type="radio" name="gender" id="other" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div>
+                <label for="sexualPreference">Sexual Preference</label>
+                <select name="sexualPreference" id="sexualPreference">
+                    <option value="male">Males</option>
+                    <option value="female">Females</option>
+                    <option value="both">Both Males and Females</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" name="interests" value="sports">
+                <label for="vehicle1"> Sports</label><br>
+                <input type="checkbox" name="interests" value="blogging">
+                <label for="vehicle2"> Blogging</label><br>
+                <input type="checkbox" name="interests" value="volunteering">
+                <label for="vehicle3"> Volunteering</label><br>
+                <input type="checkbox" name="interests" value="Bike">
+                <label for="vehicle1"> Traveling</label><br>
+                <input type="checkbox" name="interests" value="Car">
+                <label for="vehicle2"> Art & Design</label><br>
+                <input type="checkbox" name="interests" value="Boat">
+                <label for="vehicle3"> Music</label><br>
+                <input type="checkbox" name="interests" value="Bike">
+                <label for="vehicle1"> Reading</label><br>
+                <input type="checkbox" name="interests" value="Car">
+                <label for="vehicle2"> Video Gaming</label><br>
+                <input type="checkbox" name="interests" value="Boat">
+                <label for="vehicle3"> Strategic Gaming</label><br>
+                <input type="checkbox" name="interests" value="Car">
+                <label for="vehicle2"> Yoga</label><br>
+            </div>
+            <div>
+                <input type="text" name="bio" placeholder="Describe who you are">
+            </div>
+            <button type="submit"><strong>UPDATE</strong></button>
+            <div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body> -->
+  <% include partials/script %>
+</html>

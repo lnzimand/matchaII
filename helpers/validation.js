@@ -60,6 +60,14 @@ function capitalize(str){
 	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+function verifiedUser(bool) {
+    if (bool === 0) {
+        return false
+    } else {
+        return true
+    }
+}
+
 function validateUser(user) {
     var error
     if (user['password'] === user['confirmPassword']) {
@@ -86,5 +94,6 @@ export {
     validateEmail,
     validateNames,
     validatePassword,
+    verifiedUser,
     x
 }
