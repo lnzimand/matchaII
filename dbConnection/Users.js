@@ -26,10 +26,21 @@ class dbUserActions {
 
     User = {
         findEmail: (email) => {
-            const queryString = 'SELECT * FROM \`Users\` WHERE \`email\`=?'
+            const queryString = 'SELECT * FROM `Users` WHERE `email`=?'
             return this.inquiry(queryString, email)
+        },
+        findUsername: (username) => {
+            const queryString = 'SELECT * FROM `Users` WHERE `username`=?'
+            return this.inquiry(queryString, username)
+        },
+        pushUser: (params) => {
+            const queryString = 'INSERT INTO `Users` SET ?'
+            return this.inquiry(queryString, params)
         }
     }
 }
 
-export { dbUserActions }
+var userReg = { email: 'mail', username: 'username', firstname: 'firstname', lastname: 'lastname', password: 'password', vkey: 'vkey', date_created: new Date() }
+const variable = new dbUserActions()
+variable.User.pushUser(userReg).then(result => console.log(result)).catch(error => console.log(error))
+// dbUserActions.User.findEmail("lebus23@gmail.com").then(result => console.log(result))
