@@ -12,7 +12,7 @@
           <div class="divider-form"></div>
           <div class="form-group">
             <label for="sexualPreference">Sexual Preference</label>
-                <select name="sexualPreference" id="sexualPreference">
+                <select name="sexualPreference[name]" id="sexualPreference">
                     <option value="male">Males</option>
                     <option value="female">Females</option>
                     <option value="both">Both Males and Females</option>
@@ -29,25 +29,23 @@
           </div>
           <div class="form-group">
             <h4>Interests</h4>
-            <input type="checkbox" name="interests" value="sports">
-            <label for="vehicle1"> Sports</label><br>
-            <input type="checkbox" name="interests" value="blogging">
+            <input type="hidden" name="interests[sports]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
+            <label for="sports"> Sports</label><br>
+            <input type="hidden" name="interests[blogging]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle2"> Blogging</label><br>
-            <input type="checkbox" name="interests" value="volunteering">
+            <input type="hidden" name="interests[volunteering]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle3"> Volunteering</label><br>
-            <input type="checkbox" name="interests" value="Bike">
+            <input type="hidden" name="interests[traveling]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle1"> Traveling</label><br>
-            <input type="checkbox" name="interests" value="Car">
+            <input type="hidden" name="interests[art&design]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle2"> Art & Design</label><br>
-            <input type="checkbox" name="interests" value="Boat">
+            <input type="hidden" name="interests[music]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle3"> Music</label><br>
-            <input type="checkbox" name="interests" value="Bike">
+            <input type="hidden" name="interests[reading]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle1"> Reading</label><br>
-            <input type="checkbox" name="interests" value="Car">
+            <input type="hidden" name="interests[videoGaming]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle2"> Video Gaming</label><br>
-            <input type="checkbox" name="interests" value="Boat">
-            <label for="vehicle3"> Strategic Gaming</label><br>
-            <input type="checkbox" name="interests" value="Car">
+            <input type="hidden" name="interests[yoga]" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value">
             <label for="vehicle2"> Yoga</label><br>
         </div>
           <div class="divider-form"></div>

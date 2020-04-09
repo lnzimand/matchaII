@@ -10,6 +10,7 @@
   "author": "lnzimand",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
@@ -17,6 +18,8 @@
     "express-flash-messages": "^0.1.1",
     "express-generator": "^4.16.1",
     "express-session": "^1.17.0",
+    "express-simple-geoip": "^0.1.1",
+    "geoip-lite": "^1.4.1",
     "morgan": "^1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",

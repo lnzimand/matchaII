@@ -10,8 +10,8 @@ function sendMail(options) {
         }, (error, reply) => {
             console.log("send mail reply: " + reply)
             if (error){
-                console.log("error message mail: " + err && err.stack)
-                reject (err && err.stack)
+                console.log("error message mail: " + error && error.stack)
+                reject (error && error.stack)
             }
             console.log("resolved")
             resolve(reply)

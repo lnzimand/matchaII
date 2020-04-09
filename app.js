@@ -14,6 +14,10 @@ import { router as registrationRouter } from './routes/registration'
 import { router as resetPwdRouter } from './routes/resetPassword'
 import { router as completeProfile } from './routes/completeprofile'
 import { router as layoutRouter } from './routes/layout'
+import { router as messagesRouter } from './routes/messages'
+import { router as settingsRouter } from './routes/settings'
+import { router as logoutRouter } from './routes/logout'
+import { router as verificationRouter } from './routes/verify'
 import { router as FOFour } from './routes/404'
 import { request } from "http"
 
@@ -29,12 +33,15 @@ app.use(json())
 app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(session({secret: "it's a secret"}))
-app.use(function(request, response, next) {
-    response.locals.user = request.session.user
-    response.locals.errorMessages = request.session.errorMessages
-    next()
-  })
+app.use(session({
+    secret: "it's a secret",
+    resave: false,
+    saveUninitialized: true
+}))
+// app.use(function(request, response, next) {
+//     response.locals.user = request.session.user
+//     next()
+//   })
 
 app.use('/', indexRouter)
 app.use('/login', loginRouter)
@@ -42,6 +49,12 @@ app.use('/registration', registrationRouter)
 app.use('/reset_password', resetPwdRouter)
 app.use('/enrich_profile', completeProfile)
 app.use('/home', layoutRouter)
+app.use('/home/*', layoutRouter)
+app.use('/messages', messagesRouter)
+app.use('/settings', settingsRouter)
+app.use('/settings/*', settingsRouter)
+app.use('/verify', verificationRouter)
+app.use('/logout', logoutRouter)
 app.use('*', FOFour);
 
 app.listen(process.env.PORT, () => {

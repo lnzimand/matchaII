@@ -1,71 +1,21 @@
-@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css);
-@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-
-body {
-    background-color: #f0f3f5;
-    font-family: Roboto, Arial, sans-serif;
+.form-popup {
+    display: none;
 }
 
-.box {
-	background-color: #fff;
-	padding: 25px 40px;
-	margin-top: 30px; /*Remove, its example*/
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.alertError {
+    padding: 20px;
+    color: white;
+    background-color: #f44336;
 }
 
-.input-group {
-	margin: 5px 0px;
+.alertSuccess {
+    padding: 20px;
+    color: white;
+    background-color: forestgreen;
 }
 
-.btn-primary {
-	border-radius: 2px;
-	background-color: #23a9f6;
-	border-color: #23a9f6;
-	margin: 10px 0px;
-}
-
-p {
-	color: #aebbcb;
-} 
-
-a {
-	color: #23a9f6;
-}
-
-.divider-form {
-    border: 1px solid #EBEFF1;
-    margin: 15px -40px 10px;
-}
-
-label {
-	text-transform: uppercase;
-	color: #bdc7d4;
-}
-
-strong {
-	color: #95a5bb;
-}
-
-.form-control {
-    background: none;
-    height: 40px;
-    border: none;
-    border-radius: 0px;
-    box-shadow: none;
-    color: #8b9eb6;
-    padding: 0px;
-}
-
-.form-control:focus {
-    box-shadow: none;
-}
-
-.icon {
-    margin: 0;
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-    color: #808080;
+#messages {
+    text-align: center;
 }
 
 /* Change styles for span on extra small screens */

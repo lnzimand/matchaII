@@ -8,12 +8,16 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <div class="box">
-          <% if (locals.errorMessages) { %>
-            <div><%= locals.errorMessages %></div>
-            <div class="divider-form"></div>
-          <% } %>
-          <form action="/registration" name="myForm" method="POST">
+          <form action="/registration" name="myForm" onsubmit="return validateForm()" method="POST">
             <h2>Register</h2>
+            <% if(message) { %>
+              <div class="alertSuccess" style="color: white;"><%= message %></div>
+            <% } %>
+            <% if(errorMessage) { %>
+              <div class="alertError" style="color: white;"><%= errorMessage %></div>
+            <% } %>
+            <div class="alertError form-popup" id="errors" style="color: white;"></div>
+            <div class="divider-form"></div>
             <div class="form-group">
               <label for="firstname">First Name</label>
               <input type="text" class="form-control" name="user[firstname]" placeholder="First Name">
@@ -48,4 +52,34 @@
     </div>
   </body>
   <% include partials/script %>
+  <script>
+    function validateForm() {
+      var array = {
+        firstname: document.forms["myForm"]["user[firstname]"].value,
+        lastname: document.forms["myForm"]["user[lastname]"].value,
+        username: document.forms["myForm"]["user[username]"].value,
+        mail: document.forms["myForm"]["user[mail]"].value,
+        password: document.forms["myForm"]["user[password]"].value,
+        confirmPassword: document.forms["myForm"]["user[confirmPassword]"].value
+      }
+
+      for (let key in array) {
+        if (array.hasOwnProperty(key)) {
+          if (x(array[key])) {
+            open('errors')
+            document.getElementById('errors').innerHTML = "*Please complete all fields*";
+            return false;
+          }
+        }
+      }
+      var error = validateUser(array);
+      if (x(error)) {
+        document.getElementById('myForm').submit();
+      } else {
+        open('errors')
+        document.getElementById('errors').innerHTML = error;
+        return false;
+      }
+    }
+  </script>
 </html>

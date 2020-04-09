@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include partials/head %>
+    </head>
+    <body>
+        <div class="container" style="font-size: medium;">
+            <div class="row my-2">
+                <div class="col-lg-4 order-lg-1 text-center">
+                    <label class="custom-file">
+                      <input type="file" id="file" class="custom-file-input">
+                      <span class="custom-file-control"><i class="fa fa-cloud-upload" style="font-size:48px;color:#1887b4"></i></span>
+                    </label>
+                    <img src="//placehold.it/350" class="mx-auto img-fluid img-circle d-block fa fa-user-circle-o" alt="avatar">
+                </div>
+                <div class="col-lg-8 order-lg-2">
+                    <% include partials/loggedInMenu %>
+                    <div class="tab-content py-4">
+                        <div class="tab-pane active" id="bio">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="box">
+                                        <form action="/bio" name="myForm" method="POST">
+                                            <h2>Intro</h2>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="bio" placeholder="Describe who you are">
+                                            </div>
+                                            <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </body>
+    <% include partials/script %>
+</html>

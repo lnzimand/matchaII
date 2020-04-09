@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include partials/head %>
+        <style>
+          .content {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            color: #333333;
+            /* background-color: #333333; */
+            list-style-type: none;
+          }
+
+          .content input {
+            background-color: #333333;
+            color: floralwhite;
+          }
+
+          .content input:hover {
+            background-color: #111111;
+          }
+        </style>
+    </head>
+    <body>
+      <% include partials/loggedInMenu %>
+      <div class="row row-no-gutters">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="row content row-no-gutters">
+          <div class="card">
+            <div class="error" id="error" style="color: red;"></div>
+          </div>
+          <div class="col-md-4"><strong>Names</strong></div>
+          <div class="col-md-6">Jane Doe</div>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-secondary fa fa-edit" onclick="openForm('name', ['username', 'gender', 'mail', 'password'])" value="&#xf0f6 Edit">
+          </div>
+        </div>
+        <div class="form-popup" id="name">
+          <form action="/settings/edit_names" name="nameForm" onsubmit="return validateFormNames()" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="user[firstname]" placeholder="Enter your first name">
+            <input type="text" class="form-control" name="user[lastname]" placeholder="Enter your last name">
+            <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+            <input type="button" class="btn btn-secondary" onclick="closeForm('name')" value="Cancel">
+          </div>
+          </form>
+        </div>
+        <div class="row content row-no-gutters">
+          <div class="col-md-4"><strong>Username</strong></div>
+          <div class="col-md-6">Jane</div>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-secondary fa fa-edit" onclick="openForm('username', ['name', 'gender', 'mail', 'password'])" value="&#xf0f6 Edit">
+          </div>
+        </div>
+        <div class="form-popup" id="username">
+          <form action="/settings/edit_username" name="usernameForm" onsubmit="return validateUsernameForm()" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Preferred username">
+            <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+            <input type="button" class="btn btn-secondary" onclick="closeForm('username')" value="Cancel">
+          </div>
+          </form>
+        </div>
+        <div class="row content row-no-gutters">
+          <div class="col-md-4"><strong>Gender</strong></div>
+          <div class="col-md-6">Female</div>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-secondary fa fa-edit" onclick="openForm('gender', ['name', 'username', 'mail', 'password'])" value="&#xf0f6 Edit">
+          </div>
+        </div>
+        <div class="form-popup" id="gender">
+          <form action="/settings/edit_gender" name="genderForm" onsubmit="return validateGenderForm()" method="POST">
+          <div class="form-group">
+            <input type="radio" name="gender" id="male" value="male">
+              <label for="male">Male</label>
+              <input type="radio" name="gender" id="female" value="female">
+              <label for="female">Female</label>
+              <input type="radio" name="gender" id="other" value="other">
+              <label for="other">Other</label>
+            <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+            <input type="button" class="btn btn-secondary" onclick="closeForm('gender')" value="Cancel">
+          </div>
+          </form>
+        </div>
+        <div class="row content row-no-gutters">
+          <div class="col-md-4"><strong>Email</strong></div>
+          <div class="col-md-6">janedoe@example.com</div>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-secondary fa fa-edit" onclick="openForm('mail', ['name', 'username', 'gender', 'password'])" value="&#xf0f6 Edit">
+          </div>
+        </div>
+        <div class="form-popup" id="mail">
+          <form action="/settings/edit_email" name="emailForm" onsubmit="return validateEmailForm()" method="POST">
+          <div class="form-group">
+            <input type="email" class="form-control" name="mail" placeholder="Enter your email">
+            <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+            <input type="button" class="btn btn-secondary" onclick="closeForm('mail')" value="Cancel">
+          </div>
+          </form>
+        </div>
+        <div class="row content row-no-gutters">
+          <div class="col-md-4"><strong>Password</strong></div>
+          <div class="col-md-6"></div>
+          <div class="col-md-2">
+            <input type="button" class="btn btn-secondary fa fa-edit" onclick="openForm('password', ['name', 'username', 'mail', 'gender'])" value="&#xf0f6 Edit">
+          </div>
+        </div>
+        <div class="form-popup" id="password">
+          <form action="/settings/edit_password" name="passwordForm" onsubmit="return validatePasswordForm()" method="POST">
+            <div class="form-group">
+              <input type="password" class="form-control" name="oldpassword" placeholder="Current Password">
+              <input type="password" class="form-control" name="newpassword" placeholder="New Password">
+              <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password">
+              <button type="submit" class="btn-block btn btn-lg btn-primary">Save</button>
+              <input type="button" class="btn btn-secondary" onclick="closeForm('password')" value="Cancel">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+    <% include partials/script %>
+    <script>
+      function validateFormNames() {
+        var firstname= document.forms["nameForm"]["user[firstname]"].value;
+        var lastname = document.forms["nameForm"]["user[lastname]"].value;
+
+        console.log(x(firstname) + " " + x(lastname))
+        if (x(firstname) || x(lastname)) {
+          document.getElementById('error').innerHTML = "*Please complete all fields*";
+          return false;
+        } else {
+          var vfirstname = validateNames(firstname);
+          var vlastname = validateNames(lastname);
+
+          if (x(vfirstname) && x(vlastname)) {
+            document.getElementById('nameForm').submit();
+          } else if (vlastname) {
+            document.getElementById('error').innerHTML = `*${vlastname}*`;
+            return false;
+          } else {
+            document.getElementById('error').innerHTML = `*${vfirstname}*`;
+            return false;
+          }
+        }    
+      }
+
+      function validateUsernameForm() {
+        var value = document.forms["usernameForm"]["username"].value;
+
+        if (x(value)) {
+          document.getElementById('error').innerHTML = "*Please complete all fields*";
+          return false;
+        } else {
+          var errorMessage = validateUsername(value);
+
+          if (x(errorMessage)) {
+            document.getElementById('usernameForm').submit();
+          } else {
+            document.getElementById('error').innerHTML = `*${errorMessage}*`;
+            return false;
+          }
+        }    
+      }
+
+      function validateGenderForm() {
+        var value = document.forms["genderForm"]["gender"].value;
+
+        if (x(value)) {
+          document.getElementById('error').innerHTML = "*Please tick one*";
+          return false;
+        } else {
+            document.getElementById('genderForm').submit();
+        }    
+      }
+
+      function validateEmailForm() {
+        var value = document.forms["emailForm"]["mail"].value;
+
+        if (x(value)) {
+          document.getElementById('error').innerHTML = "*Please complete all fields*";
+          return false;
+        } else {
+            document.getElementById('emailForm').submit();
+        }    
+      }
+
+      function validatePasswordForm() {
+        var oldpassword = document.forms["passwordForm"]["oldpassword"].value;
+        var newpassword = document.forms["passwordForm"]["newpassword"].value;
+        var cpassword = document.forms["passwordForm"]["cpassword"].value;
+
+        if (x(oldpassword) || x(newpassword) || x(cpassword)) {
+          document.getElementById('error').innerHTML = "*Please complete all fields*";
+          return false;
+        } else if (newpassword !== cpassword){
+            document.getElementById('error').innerHTML = "*Password do not match*"
+            return false;
+        } else {
+          var errorMessage = validatePassword(newpassword);
+
+          if (x(errorMessage)) {
+            document.getElementById('passwordForm').submit();
+          } else {
+            document.getElementById('error').innerHTML = `*${errorMessage}*`;
+            return false;
+          }
+        }
+      }
+    </script>
+</html>

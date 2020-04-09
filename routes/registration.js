@@ -1,43 +1,50 @@
 "use strict"
 import express from "express"
 const router = express.Router()
-import { dbUserActions as User } from "../dbConnection/users"
+import bcrypt from "bcrypt"
+import { User } from "../dbConnection/Users"
 import { validateUser, x as empty } from "../helpers/validation"
 import { sendMail } from "../helpers/mail"
 import randomstring from "randomstring"
 
 router.get('/', (request, response, next) => {
     response.render('registration', {page: 'Registration',
-    menuId: 'registration'})
+    menuId: 'registration', message: '', errorMessage: ''})
 })
 
 router.post('/', (request, response, next) => {
     var { firstname, lastname, username, mail, password, confirmPassword } = request.body.user
-    request.session.errorMessages = validateUser({firstname, lastname, username, mail, password, confirmPassword})
+    var errorMessages = validateUser({firstname, lastname, username, mail, password, confirmPassword})
 
     var user = new User()
     var vkey = randomstring.generate()
-    if (empty(request.session.errorMessages)) {
-        user.find('SELECT * FROM \`Users\` WHERE \`email\`=?', mail).then(result => {
+    if (empty(errorMessages)) {
+        user.findOne({email: mail}, 'Users').then(result => {
             if (result.length > 0) {
-                response.send("Email already exist")
+                response.render('registration', { page: 'Registration',
+                menuId: 'registration', message: '', errorMessage: '*Email already exist*'})
             } else {
-                user.find('SELECT * FROM \`Users\` WHERE \`username\`=?', username).then(result => {
-                    console.log(result)
+                user.findOne({username: username}, 'Users').then(result => {
                     if (result.length > 0) {
-                        response.send("Username already exist, please choose a different username")
+                        response.render('registration', { page: 'Registration',
+                        menuId: 'registration', message: '', errorMessage: '*Username already exist*'})
                     } else {
-                        var userReg = { email: mail, username: username, firstname: firstname, lastname: lastname, password: password, vkey: vkey, date_created: new Date() }
-                        var options = {to: mail, subject: "Email verification", message: `<a href='localhost:8080/verify/:${vkey}'>Click here</a> to verify your email`}
+                        bcrypt.hash(password, 10, (error, hash) => {
+                            var userReg = { email: mail, username: username, firstname: firstname, lastname: lastname, password: hash, vkey: vkey, date_created: new Date() }
+                            var options = {to: mail, subject: "Email verification", message: `<a href='localhost:8080/verify/user?vkey=${vkey}'>Click here</a> to verify your email`}
 
-                        sendMail(options).then((result) => {
-                            user.insert('INSERT INTO `Users` SET ?', userReg).then(result => {
-                                response.send("User successfully registered")
+                            sendMail(options).then((result) => {
+                                user.pushInfo(userReg, 'Users').then(result => {
+                                    response.render('registration', { page: 'Registration',
+                                    menuId: 'registration', message: '*User successfully registered, check your email for verification', errorMessage: ''})
+                                }).catch(error => {
+                                    response.render('registration', { page: 'Registration',
+                                    menuId: 'registration', message: '', errorMessage: '*Something went wrong. Please try again*'})
+                                })
                             }).catch(error => {
-                                throw error
+                                response.render('registration', { page: 'Registration',
+                                menuId: 'registration', message: '', errorMessage: `*Something went wrong, unable to sent mail. Please try again later`})
                             })
-                        }).catch(error => {
-                            response.send(`Something went wrong, unable to sent mail. Reason: ${error}`)
                         })
                     }
                 })
